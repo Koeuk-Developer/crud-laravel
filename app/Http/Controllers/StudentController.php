@@ -31,7 +31,8 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = Student::create($request->all());
+        return response()->json($student, 201);
     }
 
     /**
@@ -53,10 +54,10 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

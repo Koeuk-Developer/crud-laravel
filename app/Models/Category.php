@@ -12,8 +12,20 @@ class Category extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = ['name', 'description'];
 
-    public static function list(){
-        return self::all();
+    // public static function list(){
+    //     return self::all();
+        
+    // }
+    public static function list($params)
+    {
+
+        $list = self::query();
+
+        if (isset($params['search']) && filled($params['search'])) {
+            $list->where('name', 'LIKE', '%' . $params['search'] . '%');
+        }
+
+        return $list->get();
     }
     public function products():HasMany
     {

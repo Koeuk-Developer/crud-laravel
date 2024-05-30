@@ -14,9 +14,16 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index(Request $request)
+    // {
+        // $categories = Category::list();
+        // $categories = CategoryListResource::collection($categories);
+        // return response(['success' => true, 'data' =>$categories], 200);
+    // }
+    public function index(Request $request)
     {
-        $categories = Category::list();
+        $this->params = $request->only('search');
+        $categories = Category::list($this->params);
         $categories = CategoryListResource::collection($categories);
         return response(['success' => true, 'data' =>$categories], 200);
     }

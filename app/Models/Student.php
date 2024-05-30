@@ -22,6 +22,14 @@ class Student extends Model
         'phone_number',
     ];
 
+    public function getStatusAttribute() {  // returns only the status attribute on resource students
+        // return $this->score >= 50? 'pass' : 'fail';
+        if ($this->score >=50) {
+            return 'pass';
+        }else {
+            return 'fail';
+        }
+    }
     public static function list()
     {
         $data = self::all();

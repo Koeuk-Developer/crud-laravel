@@ -18,6 +18,7 @@ class StudentRequest extends DefaultRequest
         $rules = [
             'name' =>'required',
             'age' =>'required|integer',
+            'status' => 'required |integer',
         ];
         if (filled(request()->route('id'))) {
             $rules['phone_number'] = 'required|unique:students,phone_number,' . request()->route('id') . ',id,deleted_at,NULL';
